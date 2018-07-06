@@ -13,6 +13,8 @@ setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump
 addgroup -g $USER_GID user
 adduser -h /home/user -G user -D -u $USER_UID user
 
+chown -R user:user "$DATA_DIR"
+
 su-exec user /usr/sbin/tcpdump $@ &
 child=$!
 

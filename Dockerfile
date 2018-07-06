@@ -10,7 +10,9 @@ ENV \
   USER_GID=1000 \
   \
   SET_CONTAINER_TIMEZONE=true \
-  CONTAINER_TIMEZONE=Europe/Moscow
+  CONTAINER_TIMEZONE=Europe/Moscow \
+  \
+  DATA_DIR=/data
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 

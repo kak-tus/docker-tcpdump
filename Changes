@@ -1,2 +1,5 @@
+0.2 2018-07-06
+  - Fix permissions to data dir.
+
 0.1 2018-07-06
   - First release.
