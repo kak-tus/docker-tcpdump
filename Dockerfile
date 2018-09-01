@@ -3,7 +3,8 @@ FROM corfr/tcpdump:latest
 RUN \
   apk add --no-cache \
     libcap \
-    su-exec
+    su-exec \
+    tzdata
 
 ENV \
   USER_UID=1000 \
