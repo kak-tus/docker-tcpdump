@@ -15,7 +15,18 @@ adduser -h /home/user -G user -D -u $USER_UID user
 
 chown -R user:user "$DATA_DIR"
 
-su-exec user /usr/sbin/tcpdump $@ &
+filter_host=""
+
+if [ -n "$FILTER_HOST_FROM" ]; then
+  host=$(curl -s "$FILTER_HOST_FROM")
+  if [ -n "$host" ]; then
+    filter_host="and host $host"
+    echo "$filter_host"
+  fi
+fi
+exit
+
+su-exec user /usr/sbin/tcpdump $@ $filter_host &
 child=$!
 
 trap "kill $child" SIGTERM SIGINT

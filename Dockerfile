@@ -2,6 +2,7 @@ FROM corfr/tcpdump:latest
 
 RUN \
   apk add --no-cache \
+    curl \
     libcap \
     su-exec \
     tzdata
@@ -13,7 +14,8 @@ ENV \
   SET_CONTAINER_TIMEZONE=true \
   CONTAINER_TIMEZONE=Europe/Moscow \
   \
-  DATA_DIR=/data
+  DATA_DIR=/data \
+  FILTER_HOST_FROM=
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
