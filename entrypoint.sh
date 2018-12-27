@@ -24,7 +24,6 @@ if [ -n "$FILTER_HOST_FROM" ]; then
     echo "$filter_host"
   fi
 fi
-exit
 
 su-exec user /usr/sbin/tcpdump $@ $filter_host &
 child=$!
