@@ -19,10 +19,13 @@ filter_host=""
 
 if [ -n "$FILTER_HOST_FROM" ]; then
   host=$(curl -s "$FILTER_HOST_FROM")
-  if [ -n "$host" ]; then
-    filter_host="and host $host"
-    echo "$filter_host"
+  if [ -z "$host" ]; then
+    echo "Unsuccess got host from url"
+    exit
   fi
+
+  filter_host="and host $host"
+  echo "$filter_host"
 fi
 
 su-exec user /usr/sbin/tcpdump $@ $filter_host &
